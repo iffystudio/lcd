@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- produced by Iffy Studio -->
+<html lang="en">
+  <head>
+    <link href="/css/?<% $local ? rand() : '1668' %>" rel="stylesheet">
+    <meta charset="utf-8">
+% if ( $mobile ) {
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+% }
+    <meta property="og:image" content="https://lcd.iffy.studio/img/<% $LCD::THEME{ $theme }{ image } || 'new_mes.png' %>">
+    <meta property="og:title" content="<% $LCD::THEME{ $theme }{ title } || 'Unread (1)' %>">
+    <title>ＬＣＤ</title>
+  </head>
+  <body>\

@@ -1,0 +1,16 @@
+<div id="controls"><table cellspacing="0"><tr>\
+<td id="bigger"><span><% $mobile ? '↑' : 'Bigger' %></span></td>\
+<td id="smaller"><span><% $mobile ? '↓' : 'Smaller' %></span></td>\
+<td id="faster"><span><% $mobile ? '←' : 'Faster' %></span></td>\
+<td id="slower"><span><% $mobile ? '→' : 'Slower' %></span></td>\
+<td id="msg"><input maxlength="210" placeholder="Message"></td>\
+<td id="colour"><span><% $mobile ? '#' : $colour %></span></td>\
+% if ( ! $mobile ) {
+<td id="info"><a href="http<% $local ? '://lcd' : 's://lcd.iffy.studio' %>/?info" target="_blank">?</a></td>\
+% }
+</tr></table></div>\
+<%init>
+  my ( $colour );
+
+  $colour = $ENV{ HTTP_ACCEPT_LANGUAGE } =~ /^en-US/ ? 'Color' : 'Colour';
+</%init>

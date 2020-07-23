@@ -1,0 +1,15 @@
+{ \
+% foreach $style ( sort keys %LCD::STYLES ) {
+<% $first ? '' : ', ' %><% $style %>: [ \
+%  for $i ( 1 .. scalar @{ $LCD::STYLES{ $style }{ tracking } } ) {
+<% $i == 1 ? '' : ', ' %><% $LCD::STYLES{ $style }{ tracking }[ $i - 1 ] %>\
+%  }
+ ]\
+%  $first = 0;
+% }
+ }\
+<%init>
+  my ( $first, $i, $style );
+
+  $first = 1;
+</%init>

@@ -1,0 +1,34 @@
+<%args>
+  $url
+</%args>
+<%init>
+  my ( $arg, @args, %args, $key, $msg );
+
+  $m->redirect( '/' ) if ( $url =~ /%/ );
+
+  if ( $ENV{ QUERY_STRING } eq 'info' ) {
+    $m->comp( '/site/info.mas' );
+    }
+  elsif ( $ENV{ QUERY_STRING } eq 'embed' ) {
+    $m->comp( '/site/info.mas' );
+    }
+  else {
+    @args = split /\//, $url;
+
+    shift @args;
+
+    if ( $msg = shift @args ) {
+      $args{ msg } = $msg;
+
+      foreach $arg ( @args ) {
+        $key = substr $arg, 0, 1;
+
+        if ( $key =~ /[achr]/ ) {
+          $args{ $key } = substr $arg, 1;
+          }
+        }
+      }
+
+    $m->comp( '/site/page.mas', %args );
+  }
+</%init>

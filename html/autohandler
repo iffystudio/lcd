@@ -1,0 +1,22 @@
+<%init>
+  Hoo::SetMasonRequestObject( $m );
+
+  $local = ( $ENV{ HTTP_HOST } =~ /^lcd$/ );
+
+  $mobile = ( $ENV{ HTTP_USER_AGENT } =~ /(android)|(ipad)|(iphone)|(ipod)|(trident)/i );
+
+  if ( $ENV{ REQUEST_URI } =~ /oveguqnl/i ) {
+    $theme = 2;
+    }
+  elsif ( $ENV{ REQUEST_URI } =~ /pbateng/i ) {
+    $theme = 3;
+    }
+  elsif ( $ENV{ REQUEST_URI } =~ /naavirefnel/i ) {
+    $theme = 4;
+    }
+  else {
+    $theme = 1;
+  }
+
+  Hoo::HandleURL( { %ARGS, handler => 1 } );
+</%init>

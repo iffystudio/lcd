@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/popup.css" rel="stylesheet">
+    <meta charset="utf-8">
+% if ( $mobile ) {
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+% }
+    <style>
+      body, h1, h2, li, ol, p { font-size: 14px; line-height: 1; margin: 0; padding: 0; }
+      a { color: #000; }
+      body { background: #eee; font-family: monospace; padding: 28px; }
+      h2 { margin-top: 28px; }
+      h1, h2, li, p { margin-bottom: 14px; }
+      div#tldr { border: 1px solid #000; border-left-width: 0; border-right-width: 0; margin-top: 28px; padding: 14px 0 2px; }
+      div#tldr h2:first-child { margin-top: 0; }
+      li { margin-left: 29px; }
+    </style>
+    <title>ＬＣＤ Info</title>
+  </head>
+  <body>
+    <h1>LCD Info</h1>
+    <p>Send an LCD-styled message to someone.</p>
+    <p>(Or add it to your website with one line of code.)</p>
+
+    <div id="tldr">
+      <h2>TL/DR</h2>
+      <ol>
+        <li>Visit <a href="<% $domain %>" target="_blank">lcd.iffy.studio</a>.</li>
+        <li>After the message scrolls by once, a control bar will appear.</li>
+        <li>Use it to compose a message, change size, speed, and <% $us ? 'color' : 'colour' %>.</li>
+        <li>Send the generated URL to a friend.</li>
+      </ol>
+
+      <h2>Secret Menu</h2>
+      <p>For a fireworks display, add '<strong>#frw</strong>' to the end of the URL: <a class="popup" href="<% $domain %>sverjbexf/#frw">lcd.iffy.studio/sverjbexf/#frw</a></p>
+      <p>For a rainbow-<% $us ? 'colored' : 'coloured' %> message, add '<strong>#rnb</strong>' to the end of the URL: <a class="popup" href="<% $domain %>envaobj/#rnb">lcd.iffy.studio/envaobj/#rnb</a></p>
+      <p>To combine effects, separate with a comma: <a class="popup" href="<% $domain %>#frw,rnb">lcd.iffy.studio/#frw,rnb</a></p>
+    </div>
+
+    <h2>Also</h2>
+    <p>Add an LCD display to your website.</p>
+    <p><iframe src="<% $domain %>" style="border: 0; border-radius: 1px; height: 40px; width: 200px;"></iframe></p>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>">https://lcd.iffy.studio/</a>"&gt;&lt;/iframe&gt;</p>
+
+    <h2>Message, Size, Speed</h2>
+    <p>Visit <a href="<% $domain %>" target="_blank">lcd.iffy.studio</a> to generate the URL to use for the iframe "src".</p>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>Ovt+Naq+Fybj/h5/r1/" target="_blank">https://lcd.iffy.studio/Ovt+Naq+Fybj/h5/r1/</a>"&gt;</p>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>Fznyy+Naq+Snfg/h1/r5/" target="_blank">https://lcd.iffy.studio/Fznyy+Naq+Snfg/h1/r5/</a>"&gt;</p>
+
+    <h2><% $us ? 'Colors' : 'Colours' %></h2>
+    <p>Format is '<strong>c</strong>' prefix and the hex value (e.g.<% $us ? ',' : '' %> "e11d21" for red).</p>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>Pbyb<% $us ? '' : 'h' %>ef/ce11d21/" target="_blank">https://lcd.iffy.studio/Pbyb<% $us ? '' : 'h' %>ef/ce11d21/</a>"&gt;</p>
+
+    <h2>Alternate <% $us ? 'Colors' : 'Colours' %></h2>
+    <p>Format is '<strong>a</strong>' prefix and the hex value (e.g.<% $us ? ',' : '' %> "999" for <% $us ? 'gray' : 'grey' %>).</p>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>Nygreangr+Pbyb<% $us ? '' : 'h' %>ef/a999/" target="_blank">https://lcd.iffy.studio/Nygreangr+Pbyb<% $us ? '' : 'h' %>ef/a999/</a>"&gt;</p>
+    <p>Otherwise, capital letters and punctuation are displayed in white.</p>
+
+    <h2>Link</h2>
+    <p>Append '<strong>#your.url/path</strong>' to the URL to make the message clickable.</a>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>1~perzragny/#appstore.com/incremental" target="_blank">https://lcd.iffy.studio/1~perzragny/#appstore.com/incremental</a>"&gt;</p>
+
+    <h2>Editor</h2>
+    <p>Append '<strong>#ui</strong>' to the URL to display the message editor after the message has completed one cycle.</p>
+    <p>&lt;iframe src="<a class="popup" href="<% $domain %>#ui" target="_blank">https://lcd.iffy.studio/#ui</a>"&gt;</p>
+
+    <h2>CSS</h2>
+    <p>&lt;iframe src="https://lcd.iffy.studio/" style="border: 0; height: 200px; width: 400px;"&gt;</p>
+    <p>Minimum recommended iframe dimensions: height: 200px, width: 400px.</p>
+
+    <h2>Style Sheets</h2>
+    <p>#lcd { border: 0; height: 200px; width: 400px; }</p>
+    <p>&lt;iframe id="lcd" src="https://lcd.iffy.studio/"&gt;</p>
+
+    <h2>Contact</h2>
+    <p><a href="mailto:info@iffy.studio">info@iffy.studio</a></p>
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="/js/popup.js"></script>
+    <script>
+      function __keyDown( _e ) {
+        if ( _e.which == 27 ) {
+          $( 'a.popup' ).data( 'popup' ).close();
+          }
+        }
+
+      $( function () {
+        $( '.popup' ).popup( { height: 250, width: 525 } );
+
+        $( 'body' ).keydown( __keyDown );
+        } );
+    </script>
+  </body>
+</html>\
+<%init>
+  my ( $domain, $us );
+
+  $domain = $local ? 'http://lcd/' : 'https://lcd.iffy.studio/';
+
+  $us = $ENV{ HTTP_ACCEPT_LANGUAGE } =~ /^en-US/;
+</%init>

@@ -1,0 +1,33 @@
+<& /site/header.mas, alt => $alt, colour => $colour &>
+    <div id="ticker"></div>
+<& /site/footer.mas, alt => $alt, colour => $colour, height => $height, msg => $msg, rate => $rate &>\
+<%args>
+  $a    => ''
+  $c    => ''
+  $f    => ''
+  $h    => ''
+  $l    => ''
+  $msg  => $LCD::DEFAULT{ msg }
+  $r    => ''
+  $t    => ''
+  $u    => ''
+</%args>
+<%init>
+  my ( $alt, $char, $colour, $height, $label, $rate, $text, $url );
+
+  $alt  = $a =~ /^([0-9a-fA-F]{3}){1,2}$/ ? $a : $LCD::DEFAULT{ alt };
+
+  $colour = $c =~ /^([0-9a-fA-F]{3}){1,2}$/ ? $c : $LCD::DEFAULT{ colour };
+
+  $height = $h =~ /^[1-5]$/ ? $h : $LCD::DEFAULT{ height };
+
+  $msg =~ s/\+/ /g;
+  $msg =~ s/[^$LCD::VALID]//g;
+  $msg =~ s/ /+/g;
+  $msg =~ y/A-Za-z/N-ZA-Mn-za-m/;
+
+  $rate = $r =~ /^[1-5]$/ ? $r : $LCD::DEFAULT{ rate };
+
+  $u =~ s/_/./g;
+  $u =~ s/\'/\//g;
+</%init>

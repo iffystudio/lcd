@@ -1,0 +1,61 @@
+body, input { font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; }
+
+body { background: #000; margin: 0; -moz-user-select: none; -webkit-user-select: none; }
+body, html, svg { height: 100%; }
+
+svg.r-1 path.on { fill: #e20b18; }
+svg.r-2 path.on { fill: #fd8c24; }
+svg.r-3 path.on { fill: #feeb34; }
+svg.r-4 path.on { fill: #0e7f2b; }
+svg.r-5 path.on { fill: #0e54fb; }
+svg.r-6 path.on { fill: #741385; }
+
+div#controls { bottom: 0; cursor: pointer; display: none; height: 26px; left: 0; padding: <% $mobile ? '0 4px 8px' : '0 8px 10px' %>; position: absolute; right: 0; }
+div#share { background: #ddd; border-radius: 1px; display: none; height: 26px; left: 0; line-height: 26px; margin: <% $mobile ? '8px 4px 0' : '10px 8px 0' %>; overflow-x: hidden; padding: 0 6px; position: absolute; right: 0; text-align: center; text-overflow: ellipsis; top: 0; }
+div#share a { color: #000; }
+
+div#controls a, div#controls span { display: inline-block; }
+
+div#ticker { left: 50%; overflow: hidden; position: absolute; right: 0; top: 50%; visibility: hidden; white-space: nowrap; -webkit-highlight: none; }
+
+% foreach $style ( sort keys %LCD::STYLES ) {
+%  foreach $i ( 1 .. scalar @{ $LCD::STYLES{ $style }{ tracking } } ) {
+body.iframe div#ticker.s<% $style %>.h<% $i %> svg { margin-right: <% int( $LCD::STYLES{ $style }{ tracking }[ $i - 1 ] / 2 ) %>px; }
+div#ticker.s<% $style %>.h<% $i %> svg { margin-right: <% $LCD::STYLES{ $style }{ tracking }[ $i - 1 ] %>px; }
+%  }
+% }
+
+path { fill: #808080; fill-opacity: 0.25; }
+path.on { fill-opacity: 1; }
+
+rect { fill: #ff5656; height: 10px; stroke: #000; stroke-width: 0; width: 10px; }
+
+div#ticker.h1 rect.b, div#ticker.h1 rect.r { width: 10.5px; }
+div#ticker.h2 rect.b, div#ticker.h2 rect.r { width: 10.4px; }
+div#ticker.h3 rect.b, div#ticker.h3 rect.r { width: 10.3px; }
+div#ticker.h4 rect.b, div#ticker.h4 rect.r { width: 10.2px; }
+div#ticker.h5 rect.b, div#ticker.h5 rect.r { width: 10.1px; }
+
+div#ticker.h1 rect.b, div#ticker.h1 rect.d { height: 10.5px; }
+div#ticker.h2 rect.b, div#ticker.h2 rect.d { height: 10.4px; }
+div#ticker.h3 rect.b, div#ticker.h3 rect.d { height: 10.3px; }
+div#ticker.h4 rect.b, div#ticker.h4 rect.d { height: 10.2px; }
+div#ticker.h5 rect.b, div#ticker.h5 rect.d { height: 10.1px; }
+
+svg:last-child { margin-right: 0; }
+
+table { height: 100%; width: 100%; }
+
+td { line-height: 26px; padding: 1px; text-align: center; white-space: nowrap; }
+td.dim { color: #999; }
+
+td a { color: #000; text-decoration: none; }
+td a, td span { background: #ddd; border-radius: 1px; box-sizing: border-box; height: 26px; min-width: 30px; padding: 0 8px; -webkit-user-select: none; }
+
+td#msg { width: 100%; }
+td#msg input { border: none; border-radius: 1px; box-sizing: border-box; display: inline-block; height: 26px; line-height: 26px; outline: none; padding: 0 8px; width: 100%; -webkit-appearance: none; -webkit-highlight: none; }
+
+<& /css/fireworks.css &>\
+<%init>
+  my ( $i, $style );
+</%init>
